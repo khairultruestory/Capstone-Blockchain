@@ -24,28 +24,16 @@ The project prioritizes user experience by providing a web-based graphical user 
 
 To make informed trading decisions, the trading bot fetches real-time data for selected cryptocurrencies. This data includes price charts, trading volumes, historical data, and other relevant information. The bot continuously updates this information to ensure traders have access to the latest market data.
 
-## Getting Started
+## Todo list
 
 Follow these steps to get started with the project:
 
-1. Clone the repository to your local machine.
-
-   ```bash
-   git clone https://github.com/your-username/blockchain-capstone.git
-   ```
-
-2. Install the necessary dependencies.
-
-   ```bash
-   cd blockchain-capstone
-   npm install
-   ```
-
-3. Configure MetaMask and connect your Ethereum wallet to the application.
-
-4. Customize the trading bot settings, including indicator parameters and cryptocurrency pairs.
-
-5. Launch the application and access the web GUI.
+1. Contract with basic trading functions.
+2. Linking with existing exchanges.
+3. Pull data of crypto prices and input indicators.
+4. Configure MetaMask and connect wallet to the application.
+5. Customize the trading settings, including indicator parameters and cryptocurrency pairs.
+6. Actvate the trade with the web GUI.
 
 ## Usage
 
@@ -64,13 +52,5 @@ To use the trading bot:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
-
-- Special thanks to the [MetaMask](https://metamask.io/) team for their excellent wallet and developer tools.
-- We acknowledge the open-source community for their valuable contributions to blockchain and cryptocurrency technologies.
-
-## Support
-
-If you encounter any issues or have questions about this project, please open an issue on the GitHub repository or contact the project maintainers.
 
 Happy trading! 🚀📈🤖
