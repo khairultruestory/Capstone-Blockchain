@@ -1,10 +1,9 @@
-# Capstone-Blockchain
-
-# Blockchain Capstone Project
+# Blockchain Capstone Project - Defi Trade
 
 ## Overview
 
-This repository contains the code and documentation for a blockchain capstone project that combines various technologies and concepts in the blockchain and cryptocurrency space. The project focuses on creating a trading bot using MetaMask for secure transactions, integrating commonly used technical indicators with adjustable settings, implementing a user-friendly web GUI, and fetching real-time data of selected cryptocurrencies for informed trading decisions.
+The main idea is to create a simple interface for beginner to trade their cryptocurrency, zero knowledge on trading.
+This repository contains the code and documentation for a trading interface that combines various technologies and concepts in the blockchain and cryptocurrency space. The project focuses on creating a trading bot using MetaMask for secure transactions, integrating commonly used technical indicators with adjustable settings, implementing a user-friendly web GUI, and fetching real-time data of selected cryptocurrencies for informed trading decisions.
 
 ## Features
 
