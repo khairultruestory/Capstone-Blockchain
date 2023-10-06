@@ -22,7 +22,7 @@ function fetchCryptoPrices() {
                         platformPricesDiv.innerHTML += `<p>Error fetching ${symbol} price</p>`;
                     });
             }
-        }, 3000); // Refresh every 1000 milliseconds (1 second)
+        }, 200); // Refresh every 1000 milliseconds (1 second)
     }
 }
 
