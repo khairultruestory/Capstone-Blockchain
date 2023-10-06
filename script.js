@@ -1,4 +1,4 @@
-const cryptoSymbols = ['bitcoin', 'ethereum', 'dogecoin'];
+const cryptoSymbols = ['bitcoin', 'ethereum', 'dogecoin', 'bnb', 'xrp', 'solana', 'cardano', 'tether', 'usdc'];
 const platforms = ['apeswap', 'uniswap', 'quickswap_polygon'];
 
 function fetchCryptoPrices() {
