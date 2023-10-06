@@ -1,5 +1,5 @@
 const cryptoSymbols = ['bitcoin', 'ethereum', 'dogecoin'];
-const platforms = ['apeswap', 'uniswap', 'quickswap'];
+const platforms = ['apeswap', 'uniswap', 'quickswap_polygon'];
 
 function fetchCryptoPrices() {
     for (const platform of platforms) {
@@ -26,7 +26,6 @@ function fetchCryptoPrices() {
     }
 }
 
-// Rest of your code remains the same
 
 async function fetchPrice(platform, symbol) {
     try {
@@ -46,8 +45,8 @@ function getContractAddress(platform) {
             return '0x603c7f932ed1fc6575303d8fb018fdcbb0f39a95'; // ApeSwap contract address
         case 'uniswap':
             return '0x2b4aee6b95db1094a3f1b1e682fa60a6516f60f0'; // UniSwap contract address
-        case 'quickswap':
-            return '0xd2ba23de8a19316a638dc1e7a9adda1d74233368'; // Replace with quickSwap contract address
+        case 'quickswap_polygon':
+            return '0xb5c064f955d8e7f38fe0460c556a72987494ee17'; // Replace with quickSwap contract address
         default:
             return '';
     }
