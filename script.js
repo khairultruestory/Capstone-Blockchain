@@ -4,20 +4,29 @@ const platforms = ['apeswap', 'uniswap', 'atomicswap'];
 function fetchCryptoPrices() {
     for (const platform of platforms) {
         const platformPricesDiv = document.getElementById(`${platform}-prices`);
+        
+        // Show a loading message initially
         platformPricesDiv.innerHTML = `<p>Loading...</p>`;
+        
+        // Fetch and update prices every second
+        setInterval(async () => {
+            platformPricesDiv.innerHTML = ''; // Clear previous prices
 
-        for (const symbol of cryptoSymbols) {
-            fetchPrice(platform, symbol)
-                .then(price => {
-                    platformPricesDiv.innerHTML += `<p>${symbol.toUpperCase()}: $${price}</p>`;
-                })
-                .catch(error => {
-                    console.error(`Error fetching ${symbol} price on ${platform}: ${error}`);
-                    platformPricesDiv.innerHTML += `<p>Error fetching ${symbol} price</p>`;
-                });
-        }
+            for (const symbol of cryptoSymbols) {
+                fetchPrice(platform, symbol)
+                    .then(price => {
+                        platformPricesDiv.innerHTML += `<p>${symbol.toUpperCase()}: $${price}</p>`;
+                    })
+                    .catch(error => {
+                        console.error(`Error fetching ${symbol} price on ${platform}: ${error}`);
+                        platformPricesDiv.innerHTML += `<p>Error fetching ${symbol} price</p>`;
+                    });
+            }
+        }, 1000); // Refresh every 1000 milliseconds (1 second)
     }
 }
+
+// Rest of your code remains the same
 
 async function fetchPrice(platform, symbol) {
     try {
