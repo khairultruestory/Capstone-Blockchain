@@ -46,7 +46,7 @@ function getContractAddress(platform) {
         case 'uniswap':
             return '0x2b4aee6b95db1094a3f1b1e682fa60a6516f60f0'; // UniSwap contract address
         case 'quickswap_polygon':
-            return '0xB5C064F955D8e7F38fE0460C556a72987494eE17'; // quickSwap-polygon contract address
+            return '0x68286607A1d43602d880D349187c3c48c0fD05E6'; // quickSwap-polygon contract address
         default:
             return '';
     }
