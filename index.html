@@ -1,58 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Crypto Price Tracker</title>
+    <meta charset="UTF-8">
+    <title>Crypto Prices</title>
 </head>
 <body>
-    <table id="cryptoTable">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Bitcoin</th>
-                <th>Ethereum</th>
-                <th>Solana</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>dYdX</th>
-                <td id="dydx-btc-price"></td>
-                <td id="dydx-eth-price"></td>
-                <td id="dydx-sol-price"></td>
-            </tr>
-            <tr>
-                <th>Uniswap</th>
-                <td id="uni-btc-price"></td>
-                <td id="uni-eth-price"></td>
-                <td id="uni-sol-price"></td>
-            </tr>
-            <tr>
-                <th>1inch</th>
-                <td id="inch-btc-price"></td>
-                <td id="inch-eth-price"></td>
-                <td id="inch-sol-price"></td>
-            </tr>
-        </tbody>
+    <table>
+        <tr>
+            <th></th>
+            <th>Bitcoin (BTC)</th>
+            <th>Ethereum (ETH)</th>
+            <th>Solana (SOL)</th>
+        </tr>
+        <tr>
+            <td>dYdX (DYDX)</td>
+            <td id="dydx-btc-price"></td>
+            <td id="dydx-eth-price"></td>
+            <td id="dydx-sol-price"></td>
+        </tr>
+        <tr>
+            <td>Uniswap (UNI)</td>
+            <td id="uni-btc-price"></td>
+            <td id="uni-eth-price"></td>
+            <td id="uni-sol-price"></td>
+        </tr>
+        <tr>
+            <td>1inch (1INCH)</td>
+            <td id="inch-btc-price"></td>
+            <td id="inch-eth-price"></td>
+            <td id="inch-sol-price"></td>
+        </tr>
     </table>
-
-    <script>
-        // Mock WebSocket server URL
-        const websocketUrl = 'ws://localhost:8080';
-
-        // WebSocket connection
-        const socket = new WebSocket(websocketUrl);
-
-        // Handle messages from the WebSocket server
-        socket.onmessage = (event) => {
-            const data = JSON.parse(event.data);
-
-            // Update the corresponding table cell with the received data
-            const cell = document.getElementById(`${data.exchange}-${data.currency}-price`);
-            if (cell) {
-                cell.textContent = data.price;
-            }
-        };
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-
