@@ -5,7 +5,7 @@ const platforms = ['1inch', 'mdx', 'bakeryswap','mcdex','burgerswap','paraswap']
 
 function fetchCryptoPrices() {
     for (const platform of platforms) {
-        const platformPricesDiv = document.getElementById(`${platform}-prices`);
+        const platformPricesDiv = document.getElementById(`${platform}`);
         
         // Show a loading message initially
         platformPricesDiv.innerHTML = `<p>Loading...</p>`;
