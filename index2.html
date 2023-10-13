@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Prices</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Crypto</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="bitcoin-uniswap">
+                <td>Bitcoin Uniswap</td>
+                <td>Loading...</td>
+            </tr>
+            <tr id="bitcoin-1inch">
+                <td>Bitcoin 1inch</td>
+                <td>Loading...</td>
+            </tr>
+            <tr id="bitcoin-pancakeswap">
+                <td>Bitcoin Pancakeswap</td>
+                <td>Loading...</td>
+            </tr>
+            <tr id="ethereum-uniswap">
+                <td>Ethereum Uniswap</td>
+                <td>Loading...</td>
+            </tr>
+            <tr id="ethereum-1inch">
+                <td>Ethereum 1inch</td>
+                <td>Loading...</td>
+            </tr>
+            <tr id="ethereum-pancakeswap">
+                <td>Ethereum Pancakeswap</td>
+                <td>Loading...</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const socket = new WebSocket('wss://stream.coingecko.com/coins/list');
+        socket.onopen = () => {
+            console.log('WebSocket connection opened.');
+            setInterval(() => {
+                socket.send(JSON.stringify({ type: 'ping' }));
+            }, 3000); // Send ping every 3 seconds
+        };
+
+        socket.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            // Extract real-time price information from the WebSocket data and update the table cells.
+            // You'll need to modify this part to match the actual data format.
+            // For simplicity, we are using placeholder values "0.00".
+            document.getElementById('bitcoin-uniswap').children[1].textContent = '0.00';
+            document.getElementById('bitcoin-1inch').children[1].textContent = '0.00';
+            document.getElementById('bitcoin-pancakeswap').children[1].textContent = '0.00';
+            document.getElementById('ethereum-uniswap').children[1].textContent = '0.00';
+            document.getElementById('ethereum-1inch').children[1].textContent = '0.00';
+            document.getElementById('ethereum-pancakeswap').children[1].textContent = '0.00';
+        };
+
+        socket.onclose = (event) => {
+            if (event.wasClean) {
+                console.log(`WebSocket connection closed cleanly, code=${event.code}, reason=${event.reason}`);
+            } else {
+                console.error('WebSocket connection died');
+            }
+        };
+
+        socket.onerror = (error) => {
+            console.error(`WebSocket error: ${error.message}`);
+        };
+    </script>
+</body>
+</html>
