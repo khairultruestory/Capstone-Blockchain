@@ -1,3 +1,12 @@
+const TronWeb = require('tronweb'); // If using npm
+const HttpProvider = TronWeb.providers.HttpProvider;
+
+const tronWeb = new TronWeb({
+  fullHost: 'https://api.trongrid.io', // Replace with your chosen Tron node
+});
+
+// Now you can use tronWeb to interact with the Tron blockchain.
+
 // Define the API endpoint for CoinGecko
 const apiUrl = 'https://api.coingecko.com/api/v3/simple/price';
 
