@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crypto Price Tracker</title>
+</head>
+<body>
+  <h1>Cryptocurrency Prices</h1>
+  <div id="bitcoin-change"></div>
+  <div id="ethereum-change"></div>
+  <div id="chainlink-change"></div>
+  <div id="cardano-change"></div>
+  <div id="vechain-change"></div>
+
+  <script>
+    // Include TronWeb
+    const TronWeb = require('tronweb');
+    const HttpProvider = TronWeb.providers.HttpProvider;
+
+    const tronWeb = new TronWeb({
+      fullHost: 'https://api.trongrid.io', // Replace with your chosen Tron node
+    });
+
+    // Define the API endpoint for CoinGecko
+    const apiUrl = 'https://api.coingecko.com/api/v3/simple/price';
+
+    // Define the parameters for the request
+    const params = {
+      ids: 'bitcoin,ethereum,chainlink,cardano,vechain', // Cryptocurrency IDs
+      vs_currencies: 'usdc', // Specify USDC as the desired currency
+    };
+
+    // Variables to store the previous prices
+    let previousPrices = {};
+
+    // Function to calculate and display potential profit or loss
+    function calculateProfitOrLoss(data) {
+      for (const id in data) {
+        if (previousPrices[id]) {
+          const currentPrice = data[id].usdc;
+          const previousPrice = previousPrices[id].usdc;
+          const change = currentPrice - previousPrice;
+          const profitOrLoss = change >= 0 ? 'Profit' : 'Loss';
+
+          // Update your webpage with this information
+          document.getElementById(`${id}-change`).textContent = `${profitOrLoss}: $${change.toFixed(2)}`;
+        }
+      }
+      previousPrices = data;
+    }
+
+    // Function to fetch data and update the webpage every second
+    function fetchDataAndUpdate() {
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          calculateProfitOrLoss(data);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }
+
+    // Call the function initially
+    fetchDataAndUpdate();
+
+    // Update the data every second
+    setInterval(fetchDataAndUpdate, 1000);
+  </script>
+</body>
+</html>
