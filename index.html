@@ -12,41 +12,40 @@
   <div id="vechain-price">VeChain Price: Loading...</div>
 
   <script>
-    // Define the API endpoint for CoinGecko
-    const apiUrl = 'https://api.coingecko.com/api/v3/simple/price';
-
-    // Define the parameters for the request
-    const params = {
-      ids: 'bitcoin,ethereum,chainlink,cardano,vechain', // Cryptocurrency IDs
-      vs_currencies: 'usdc', // Specify USDC as the desired currency
-    };
-
-    // Create the URL with the parameters
-    const url = new URL(apiUrl);
-    url.search = new URLSearchParams(params).toString();
+    // Define the API endpoints for CoinGecko
+    const apiUrlBitcoin = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd';
+    const apiUrlEthereum = 'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd';
+    const apiUrlChainlink = 'https://api.coingecko.com/api/v3/simple/price?ids=chainlink&vs_currencies=usd';
+    const apiUrlCardano = 'https://api.coingecko.com/api/v3/simple/price?ids=cardano&vs_currencies=usd';
+    const apiUrlVeChain = 'https://api.coingecko.com/api/v3/simple/price?ids=vechain&vs_currencies=usd';
 
     // Function to fetch data and update the webpage
-    function fetchDataAndUpdate() {
+    function fetchDataAndUpdate(url, elementId) {
       fetch(url)
         .then(response => response.json())
         .then(data => {
           // Update your webpage with this information
-          document.getElementById("bitcoin-price").textContent = `Bitcoin Price: $${data.bitcoin.usdc}`;
-          document.getElementById("ethereum-price").textContent = `Ethereum Price: $${data.ethereum.usdc}`;
-          document.getElementById("chainlink-price").textContent = `Chainlink Price: $${data.chainlink.usdc}`;
-          document.getElementById("cardano-price").textContent = `Cardano Price: $${data.cardano.usdc}`;
-          document.getElementById("vechain-price").textContent = `VeChain Price: $${data.vechain.usdc}`;
+          document.getElementById(elementId).textContent = `${elementId}: $${data[elementId.split("-")[0]].usd}`;
         })
         .catch(error => {
-          console.error('Error fetching data:', error);
+         // console.error('Error fetching data:', error);
+          break;
         });
     }
 
-    // Call the function initially
-    fetchDataAndUpdate();
+    // Call the function initially for each cryptocurrency
+    fetchDataAndUpdate(apiUrlBitcoin, "bitcoin-price");
+    fetchDataAndUpdate(apiUrlEthereum, "ethereum-price");
+    fetchDataAndUpdate(apiUrlChainlink, "chainlink-price");
+    fetchDataAndUpdate(apiUrlCardano, "cardano-price");
+    fetchDataAndUpdate(apiUrlVeChain, "vechain-price");
 
-    // Update the data every second
-    setInterval(fetchDataAndUpdate, 1000);
+    // Update the data every second for each cryptocurrency
+    setInterval(() => fetchDataAndUpdate(apiUrlBitcoin, "bitcoin-price"), 1000);
+    setInterval(() => fetchDataAndUpdate(apiUrlEthereum, "ethereum-price"), 1000);
+    setInterval(() => fetchDataAndUpdate(apiUrlChainlink, "chainlink-price"), 1000);
+    setInterval(() => fetchDataAndUpdate(apiUrlCardano, "cardano-price"), 1000);
+    setInterval(() => fetchDataAndUpdate(apiUrlVeChain, "vechain-price"), 1000);
   </script>
 </body>
 </html>
