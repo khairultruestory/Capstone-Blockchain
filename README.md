@@ -1,4 +1,4 @@
-# Blockchain Capstone Project - Defi Trade
+# Blockchain Capstone Project - wip
 <a href="https://khairultruestory.github.io/Capstone-Blockchain-Pricefeed/">Live demo here</a>
 ## Overview
 
